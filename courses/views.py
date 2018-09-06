@@ -176,8 +176,14 @@ class CourseListView(TemplateResponseMixin, View):
 
 
 from django.views.generic.detail import DetailView
+from students.forms import CourseEnrollForm
 
 
 class CourseDetailView(DetailView):
     model = Course
     template_name = 'course/course/detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CourseDetailView, self).get_context_data(**kwargs)
+        context['enroll_form'] = CourseEnrollForm(initial={'course': self.object})
+        return context
