@@ -17,3 +17,6 @@
 
 ## 缓存
 - 支持memcached
+
+## REST API
+- 支持api调用
